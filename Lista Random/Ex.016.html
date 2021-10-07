@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício #016</title>
+</head>
+<body>
+    <label for="nome">Digite seu nome: </label> <input type="text" name="nome" id="nome"><br>
+    <label for="numero1">Digite seu primeiro número da sorte: </label> <input type="text" name="numero1" id="numero1"><br>
+    <label for="numero2">Digite seu segundo número da sorte: </label> <input type="text" name="numero2" id="numero2"><br>
+    <label for="numero3">Digite seu terceiro número da sorte: </label> <input type="text" name="numero3" id="numero3"><br>
+    <button onclick="sortear()">sortear</button>
+    <p id="msg"></p>
+</body>
+</html>
+<script>
+
+    var cont = 0;
+
+    function sortear(){
+
+        cont++
+
+        let n1 = Number(document.querySelector("#numero1").value)
+        let n2 = Number(document.querySelector("#numero2").value)
+        let n3 = Number(document.querySelector("#numero3").value)
+
+        if (validar(n1) && validar(n2) && validar(n3)) {
+            let s = Math.random()*9+1
+            if(n1==s.toFixed()){
+                document.querySelector("#msg").innerHTML += `Parabéns, ${document.querySelector("#nome").value} o número ${n1} foi sorteado(a) após ${cont} sorteios! <br>`
+            }
+            if (n2==s.toFixed()) {
+                document.querySelector("#msg").innerHTML += `Parabéns, ${document.querySelector("#nome").value} o número ${n2} foi sorteado(a) após ${cont} sorteios! <br>`
+            }
+            if (n3==s.toFixed()) {
+                document.querySelector("#msg").innerHTML += `Parabéns, ${document.querySelector("#nome").value} o número ${n3} foi sorteado(a) após ${cont} sorteios! <br>`
+            }
+        }
+
+    }
+
+    function validar(x){
+        if((x>10)||(x<1)){
+            alert("Coloque um número entre 1 e 10!")
+        } else {
+            return true;
+        }
+    }
+
+
+</script>

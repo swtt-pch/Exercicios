@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="inp_renda_individual" placeholder="insira sua renda individual">
+    <input id="inp_renda_familia" placeholder="insira sua renda familiar">
+    <button onclick="validar()">Verificar ajuda</button>
+</body>
+</html>
+<script>
+
+    function validar(){
+        if (inp_renda_individual.value <= 1050 && inp_renda_familia.value <=2100) {
+        alert("Você tem direito!")
+        } else {
+            alert("Você não tem direito")
+        }
+    }
+
+
+
+</script>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício #009</title>
+</head>
+<body>
+    <div style="width: 100%; height: 22px; display: flex;">
+        <input type="submit" id="btn_nota" onclick="nota()" value="Gerar uma nota de aluno entre 3 e 10">
+        <span id="span_nota" style="display: none; color: red;font-size: 22px; font-weight: bold;">!</span>
+    </div>
+    <p id="msg_nota"></p>
+    <div style="width: 100%; height: 22px; display: flex;">
+        <input type="submit" id="btn_freq" onclick="freq()" value="Gerar uma frequência de aluno entre 50 e 100">
+        <span id="span_freq" style="display: none; color: red;font-size: 22px; font-weight: bold;">!</span>
+    </div>
+    <p id="msg_freq"></p>
+    <button onclick="validacao()">Aprovado?</button>
+    <p id="msg"></p>
+</body>
+</html>
+<script>
+    //media >= 6
+    //frequencia >=75%
+    var vlr_nota;
+    var vlr_freq;
+
+    const msg_nota = document.querySelector("#msg_nota")
+    const msg_freq = document.querySelector("#msg_freq")
+    const span_nota = document.querySelector("#span_nota")
+    const span_freq = document.querySelector("#span_freq")
+    const msg = document.querySelector("#msg")
+
+    function nota(){
+        vlr_nota = Number(Math.random()*7+3)
+        msg_nota.innerHTML = `A nota do aluno é ${vlr_nota.toFixed(1)}`
+        span_nota.style.display = "none"
+        msg.innerHTML = ""
+    }
+
+    function freq(){
+        vlr_freq = Number(Math.random()*50+50)
+        msg_freq.innerHTML = `A frequência do aluno é ${vlr_freq.toFixed(1)}%`
+        span_freq.style.display = "none"
+        msg.innerHTML = ""  
+    }
+
+    function validacao(){
+        if (!vlr_nota || !vlr_freq) {
+            if (!vlr_nota && !vlr_freq) {
+                msg.innerHTML = "Você não gerou nem a nota nem a frequência..."
+                span_nota.style.display = "block"
+                span_freq.style.display = "block"
+            }else if(!vlr_nota && vlr_freq){
+                msg.innerHTML = "Você não gerou a nota..."
+                span_nota.style.display = "block"
+            } else {
+                msg.innerHTML = "Você não gerou a frequência.."
+                span_freq.style.display = "block"
+            }
+        } else {
+            if (vlr_nota>=6 && vlr_freq>=75) {
+                msg.innerHTML = "Aprovado!!!"
+            } else {
+                msg.innerHTML = "Reprovado..."
+            }
+        }
+    }
+
+</script>

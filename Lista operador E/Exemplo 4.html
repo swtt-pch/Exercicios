@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex. #004</title>
+</head>
+<body>
+    <select name="sel_almoco" id="sel_almoco">
+        <option value="1">ovos</option>
+        <option value="2">leite de arroz</option>
+        <option value="2">bacon</option>
+    </select>
+    <select name="sel_janta" id="sel_janta">
+        <option value="1">bife</option>
+        <option value="2">hamburger de soja</option>
+        <option value="3">frango grelhado</option>
+    </select>
+    <button onclick="validar()">Sou vegano</button>
+</body>
+</html>
+<script>
+
+    function validar(){
+        if(sel_almoco.value == 2 && sel_janta.value == 2){
+            alert("Sim! Você é vegano!")
+        } else {
+            alert("Não, você não é vegano...")
+        }
+    }
+    
+</script>

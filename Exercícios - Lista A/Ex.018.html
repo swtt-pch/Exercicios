@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex. #018</title>
+    <style>
+        .times{
+            height: 210px;
+        }
+        img{
+            height: 100px;
+        }
+        #times{
+            margin-top: 55px;
+            display: block;
+            float: left;
+        }
+        input{
+            float:left;
+            margin-top: 95px;
+        }
+        #ta1,#ta2,#ta3,#ta4{
+            display: none;
+            float: left;
+        }
+        #ta1,#ta3,#ta4{
+            margin-top: 55px;
+        }
+        #hide1, #hide2, #hide3, #hide4{
+            display: none;
+        }
+        #premio{
+            height: 200px;
+        }
+        #btn{
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="times" id="div">
+            <div id="time1">
+                <img src="imagens/corinthians.png" height="100px" onclick="show1()" id="times">
+                <input type="button" value="Resetar programa" onclick="hide1()" id="hide1">
+            </div>
+            <div>
+                <input type="button" value="Esconder escudos" onclick="clean()" id="button">
+            </div>
+            <div id="ta1">
+                <img src="imagens/taça.jpg" >
+                <img src="imagens/taça.jpg" >
+            </div>
+        </div>
+        <div class="times" id="div">
+            <img src="imagens/palmeiras.png" height="100px" onclick="show2()" id="times"> 
+            <input type="button" value="Resetar programa" onclick="hide2()" id="hide2">
+            <div>
+                <input type="button" value="Esconder escudos" onclick="clean()" id="button">
+            </div>
+            <div id="ta2">
+                <img src="imagens/premio.jpg" id="premio">
+            </div>
+        </div>
+        <div class="times" id="div">
+            <img src="imagens/são paulo.png" height="100px" onclick="show3()" id="times">
+            <input type="button" value="Resetar programa" onclick="hide3()" id="hide3">
+            <div>
+                <input type="button" value="Esconder escudos" onclick="clean()" id="button">
+            </div>
+            <div id="ta3">
+                <img src="imagens/taça.jpg" >
+                <img src="imagens/taça.jpg" >
+                <img src="imagens/taça.jpg" >
+            </div>
+        </div>
+        <div class="times" id="div">
+            <img src="imagens/santos.png" height="100px" onclick="show4()" id="times">
+            <input type="button" value="Resetar programa" onclick="hide4()" id="hide4">
+            <div>
+                <input type="button" value="Esconder escudos" onclick="clean()" id="button">
+            </div>
+            <div id="ta4">
+                <img src="imagens/taça.jpg" >
+                <img src="imagens/taça.jpg" >
+            </div>
+        </div>
+    </div>
+    <input type="button" value="Mostrar escudos" onclick="app()" id="btn">
+</body>
+</html>
+
+<script>
+
+    function show1(){
+        document.getElementById("ta1").style.display= "block";
+        document.getElementById("hide1").style.display="block";
+    }
+    function hide1(){
+        document.getElementById("ta1").style.display= "none";
+        document.getElementById("hide1").style.display="none";
+    }
+    function clean(){
+        document.getElementById("container").style.display= "none";
+        document.getElementById("btn").style.display="block";
+    }
+    function app(){
+        document.getElementById("container").style.display="block";
+        document.getElementById("btn").style.display="none";
+    }
+
+    function show2(){
+        document.getElementById("ta2").style.display= "block";
+        document.getElementById("hide2").style.display="block";
+    }
+    function hide2(){
+        document.getElementById("ta2").style.display= "none";
+        document.getElementById("hide2").style.display="none";
+    }
+
+    function show3(){
+        document.getElementById("ta3").style.display= "block";
+        document.getElementById("hide3").style.display="block";
+    }
+    function hide3(){
+        document.getElementById("ta3").style.display= "none";
+        document.getElementById("hide3").style.display="none";
+    }
+
+    function show4(){
+        document.getElementById("ta4").style.display= "block";
+        document.getElementById("hide4").style.display="block";
+    }
+    function hide4(){
+        document.getElementById("ta4").style.display= "none";
+        document.getElementById("hide4").style.display="none";
+    }
+
+</script>

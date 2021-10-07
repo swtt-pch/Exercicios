@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio #022</title>
+</head>
+<body>
+    <div id="inpEntregas">
+        <label for="entregasZS">Entregas para ZS</label><input type="text" name="entregasZS" id="entregasZS"><br>
+        <label for="entregasZN">Entregas para ZN</label><input type="text" name="entregasZN" id="entregasZN"><br>
+        <label for="entregasZL">Entregas para ZL</label><input type="text" name="entregasZL" id="entregasZL"><br>
+        <label for="entregasZO">Entregas para ZO</label><input type="text" name="entregasZO" id="entregasZO"><br><br>
+        <input type="button" value="Carregar agenda" onclick="load()">
+    </div>
+    <div id="divEntregas" style="display: none;">
+        <p> Entregas ZL: <span id="valueZL"><script>document.write(0)</script></span></p>
+        <p> Entregas ZS: <span id="valueZS"><script>document.write(0)</script></span></p>
+        <p> Entregas ZN: <span id="valueZN"><script>document.write(0)</script></span></p>
+        <p> Entregas ZO: <span id="valueZO"><script>document.write(0)</script></span></p>
+        <p> Entregas restantes: <span id="valueR"><script>document.write(0)</script></span></p>
+        <div>
+            <input type="button" value="Entregar ZL" onclick="entZL()">
+            <input type="button" value="Entregar ZS" onclick="entZS()">
+            <input type="button" value="Entregar ZN" onclick="entZN()">
+            <input type="button" value="Entregar ZO" onclick="entZO()">
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    const inpEntregas = document.getElementById("inpEntregas")
+    const divEntregas = document.getElementById("divEntregas")
+    const valueZL = document.getElementById("valueZL")
+    const valueZS = document.getElementById("valueZS")
+    const valueZN = document.getElementById("valueZN")
+    const valueZO = document.getElementById("valueZO")
+    const valueR = document.getElementById("valueR")
+    var zl = 0;
+    var zs = 0;
+    var zn = 0;
+    var zo = 0;
+    var r = 0;
+
+    function load(){
+        inpEntregas.style.display= 'none';
+        divEntregas.style.display= 'block';
+        zl = Number(document.getElementById("entregasZL").value)
+        zs = Number(document.getElementById("entregasZS").value)
+        zn = Number(document.getElementById("entregasZN").value)
+        zo = Number(document.getElementById("entregasZO").value)
+        r = zl+zs+zn+zo
+        valueZL.innerHTML = zl
+        valueZS.innerHTML = zs
+        valueZN.innerHTML = zn
+        valueZO.innerHTML = zo
+        valueR.innerHTML = r
+    }
+
+    function entZL(){
+        if(zl>=1){
+            zl -= 1
+            r -= 1 
+            valueZL.innerHTML = zl
+            valueR.innerHTML = r
+        } else{
+            return false;
+        }
+    }
+
+    function entZS(){
+        if(zs>=1){
+            zs -= 1
+            r -= 1 
+            valueZS.innerHTML = zs
+            valueR.innerHTML = r
+        } else{
+            return false;
+        }
+    }
+
+    function entZN(){
+        if(zn>=1){
+            zn -= 1
+            r -= 1 
+            valueZN.innerHTML = zn
+            valueR.innerHTML = r
+        } else{
+            return false;
+        }
+    }
+
+    function entZO(){
+        if(zo>=1){
+            zo -= 1
+            r -= 1 
+            valueZO.innerHTML = zo
+            valueR.innerHTML = r
+        } else{
+            return false;
+        }
+    }
+
+</script>

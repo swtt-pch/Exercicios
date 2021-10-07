@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="Pare" onclick="pare()">
+    <input type="button" value="Pense" onclick="pense()">
+    <input type="button" value="Prossiga" onclick="prossiga()">
+    <br><br>
+    <Span id="msg"></Span>
+</body>
+</html>
+<script>
+    function pare(){
+        document.getElementById("msg").innerHTML = "Pare e aguarde!"
+        document.getElementById("msg").style.backgroundColor = "red"
+        document.getElementById("msg").style.color = "white"
+    }
+
+    function pense(){
+        document.getElementById("msg").innerHTML = "Pense se pode seguir ou se deve parar!"
+        document.getElementById("msg").style.backgroundColor = "black"
+        document.getElementById("msg").style.color = "yello"
+    }
+
+    function prossiga(){
+        document.getElementById("msg").innerHTML = "Pode seguir adiante &#128516"
+        document.getElementById("msg").style.backgroundColor = "white"
+        document.getElementById("msg").style.color = "green"
+    }
+</script>

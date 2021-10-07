@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação Continuada 2</title>
+</head>
+<body>
+    <div>
+        <!-- Título -->
+        <h1>Aco Pip – AS MELHORES PIPOCAS DO BRASIL</h1>
+        <!-- Tenha uma combo para selecionar o Produto (Pipoca com Chocolate OU Pipoca com Caramelo) -->
+        <label for="sel-produto">Selecione um tipo de pipoca: </label>
+        <select name="sel_produto" id="sel-produto">
+            <option value="" disabled selected>-- Selecione --</option>
+            <option value="0">Pipoca com Chocolate</option>
+            <option value="1">Pipoca com Caramelo</option>
+        </select>
+        <br><br>
+        <!-- Tenha outra combo para selecionar a embalagem (Pacote Pequeno OU Pacote Grande) -->
+        <label for="sel-embalagem">Selecione um tipo de pipoca: </label>
+        <select name="sel_embalagem" id="sel-embalagem">
+            <option value="" disabled selected>-- Selecione --</option>
+            <option value="0">Pacote Pequeno</option>
+            <option value="1">Pacote Grande</option>
+        </select>
+        <br><br>
+        <!-- Receba a quantidade solicitadas -->
+        <label for="inp-qtd-solicitada">Quantidade solicitada: </label>
+        <input type="text" name="inp-qtd-solicitada" id="inp-qtd-solicitada">
+        <br><br>
+        <!-- Tenha um campo (input) para ser informada a quantidade adicional de açúcar. -->
+        <label for="inp-qtd-acucar">Quantidade adicional de açúcar: </label>
+        <input type="text" name="inp-qtd-acucar" id="inp-qtd-acucar">
+        <br><br>
+        <button id="btn-orcar" onclick=orcamento()>Orçar</button>
+    </div>
+    <div id="div-resumo-orcamento" style="display: none;">
+        <h3>Resumo do Orçamento</h3>
+        <p>Quantidade Solicitada: <span id="span-qtd"></span></p>
+        <p>Embalagem Selecionada: <span id="span-embalagem"></span></p>
+        <p>Produto Selecionado: <span id="span-produto"></span></p>
+        <p>O Valor Total das Pipocas é de R$ <span id="span-vlr-total"></span></p>
+        <p>Para essa quantidade adicional de açúcar será cobrado um adicional de R$ <span id="span-adicional-acucar"></span></p>
+    </div>
+    <div id="div-botoes" style="display: none;">
+        <button onclick="novoOrcamento()">Novo Orçamento</button> <button onclick="comprar()">Comprar</button>
+    </div>
+</body>
+</html>
+<script>
+    var nome_prod;
+    var embalagem_prod;
+    var qtd_prod;
+    var qtd_acucar;
+    var preco_unitario = 0;
+    var bonus_porcent = 0;
+    var bonus_money = 0
+    var preco_total = 0;
+
+    const span_qtd = document.querySelector("#span-qtd")
+    const span_embalagem = document.querySelector("#span-embalagem")
+    const span_produto = document.querySelector("#span-produto")
+    const span_vlr_total = document.querySelector("#span-vlr-total")
+    const btn_orcamento = document.querySelector("#btn-orcar")
+    const div_resumo = document.querySelector("#div-resumo-orcamento")
+    const span_adicional_acucar = document.querySelector("#span-adicional-acucar")
+    const div_botoes = document.querySelector("#div-botoes")
+
+    function orcamento() {
+        nome_prod = document.querySelector("#sel-produto").value
+        embalagem_prod = document.querySelector("#sel-embalagem").value
+        qtd_prod = Number(document.querySelector("#inp-qtd-solicitada").value)
+        qtd_acucar = Number(document.querySelector("#inp-qtd-acucar").value)
+
+        if(validacaoOrcamento1(nome_prod, embalagem_prod, qtd_prod, qtd_acucar)){
+            if(validacaoOrcamento2(qtd_prod) &&validacaoOrcamento3(qtd_acucar)){
+                valoresUnitarios(nome_prod, embalagem_prod)
+                btn_orcamento.style.display = "none"
+                div_resumo.style.display = "block"
+                div_botoes.style.display = "block"
+
+                span_qtd.innerHTML = qtd_prod
+                span_embalagem.innerHTML = embalagem_prod
+                span_produto.innerHTML = nome_prod
+                preco_total = qtd_prod * preco_unitario
+                if (qtd_acucar>4) {     
+                    span_adicional_acucar.innerHTML = (preco_total*0.07).toFixed(2)
+                    preco_total = preco_total * 0.07 + preco_total
+                }
+                span_vlr_total.innerHTML = (preco_total - bonus_money).toFixed(2)
+            }
+        } 
+        
+
+
+    }
+
+    function validacaoOrcamento1(nome_prod, embalagem_prod, qtd_prod, qtd_acucar) {
+        if (!nome_prod || !embalagem_prod || !qtd_prod || !qtd_acucar) {
+            alert("Escolha e preencha todos os campos!")
+            return false
+        } else {
+            return true;
+        }
+    }
+
+    function validacaoOrcamento2(qtd_prod) {
+        if (qtd_prod<500) {
+            alert("Vendemos somente no atacado")
+            return false
+        } else if (qtd_prod>5000) {
+            alert("Consulte nosso PCP (planejamento e controle da produção)")
+            return false
+        } else {
+            return true
+        }
+    }
+
+    function validacaoOrcamento3(qtd_acucar) {
+        if (!(qtd_acucar>=0 && qtd_acucar<=8)) {
+            alert("Quantidade adicional de açúcar invalida")
+            return false
+        } else {
+            return true
+        }
+    }
+
+    function valoresUnitarios(x, y) {
+
+        if (x == 0 && y == 0) {
+            nome_prod = "Pipoca com Chocolate"
+            embalagem_prod = "Pacote Pequeno"
+            preco_unitario = 1.20
+        }else if (x == 1 && y == 0) {
+            nome_prod = "Pipoca com Caramelo"
+            embalagem_prod = "Pacote Pequeno"
+            preco_unitario = 1.10
+        }else if (x == 0 && y == 1) {
+            nome_prod = "Pipoca com Chocolate"
+            embalagem_prod = "Pacote Grande"
+            preco_unitario = 1.80
+        }else {
+            nome_prod = "Pipoca com Caramelo"
+            embalagem_prod = "Pacote Grande"
+            preco_unitario = 1.70
+        }
+    }
+
+    function novoOrcamento() {
+        nome_prod = 0
+        embalagem_prod = 0
+        qtd_prod = 0
+        qtd_acucar = 0
+        preco_unitario = 0
+        bonus_porcent = 0
+        preco_total = 0
+        document.querySelector("#sel-produto").value = ""
+        document.querySelector("#sel-embalagem").value = ""
+        document.querySelector("#inp-qtd-solicitada").value = ""
+        document.querySelector("#inp-qtd-acucar").value = ""
+        div_resumo.style.display = "none"
+        btn_orcamento.style.display = "block"
+        div_botoes.style.display = "none"
+    }
+
+    function comprar() {
+        bonus_porcent = Math.random()*2+3.5
+        bonus_money = (bonus_porcent * preco_total)/100
+        alert(`PARABÉNS!!! Você recebeu um bônus de ${bonus_porcent.toFixed(1)}%, na sua próxima compra você terá um bônus de R$ ${bonus_money.toFixed(2)}`)
+        novoOrcamento();
+    }
+</script>

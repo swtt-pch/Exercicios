@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabuada</title>
+</head>
+<body>
+    <div>
+        <h1>Tabuada</h1>
+        <p>selecione um numero para aparecer a sua tabuada</p>
+        <select name="tabuada" id="tabuada">
+            <option value="" selected disabled>Selecione</option>
+            <option value="2">Dois</option>
+            <option value="3">Três</option>
+            <option value="4">Quatro</option>
+            <option value="5">Cinco</option>
+            <option value="6">Seis</option>
+            <option value="7">Sete</option>
+            <option value="8">Oito</option>
+            <option value="9">Nove</option>
+        </select>
+        <button onclick="tabuada()">Mostrar tabuada</button>
+    </div>
+    <div id="res" style="display: none;">
+        <h2>Tabuada do <span id="number"></span></h2>
+        <p><span id="number0"></span> x 1 = <span id="resultado0"></span></p>
+        <p><span id="number1"></span> x 2 = <span id="resultado1"></span></p>
+        <p><span id="number2"></span> x 3 = <span id="resultado2"></span></p>
+        <p><span id="number3"></span> x 4 = <span id="resultado3"></span></p>
+        <p><span id="number4"></span> x 5 = <span id="resultado4"></span></p>
+        <p><span id="number5"></span> x 6 = <span id="resultado5"></span></p>
+        <p><span id="number6"></span> x 7 = <span id="resultado6"></span></p>
+        <p><span id="number7"></span> x 8 = <span id="resultado7"></span></p>
+        <p><span id="number8"></span> x 9 = <span id="resultado8"></span></p>
+        <p><span id="number9"></span> x 10 = <span id="resultado9"></span></p>
+    </div>
+</body>
+</html>
+
+<script>
+
+    const shownumber = document.getElementById("number")
+    const app = document.getElementById("res")
+    var res = []
+    function tabuada(){
+        var numero = Number(document.getElementById("tabuada").value)
+        shownumber.innerHTML = numero
+        for (let index = 0; index < 10; index++) {
+            app.style.display="block"
+            res[index] = numero*(index+1)
+            document.getElementById("resultado"+index).innerHTML = res[index]
+            document.getElementById("number"+index).innerHTML = numero
+        }
+    }
+</script>

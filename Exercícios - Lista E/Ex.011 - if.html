@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <label for="inpQtdFilhos">Quantos filhos você tem?</label><input type="text" name="inpQtdFilhos" id="inpQtdFilhos">
+        <button onclick="Analisar()">Analisar familia</button>
+    </div>
+    <div id="divMsg">
+        
+    </div>
+</body>
+</html>
+<script>
+
+    const msg = document.querySelector('#divMsg')
+
+    function Analisar(){
+
+        msg.innerHTML = ''
+
+        var qtdFilhos = Number(document.getElementById('inpQtdFilhos').value)
+
+        if (qtdFilhos>=1) {
+            document.querySelector('#divMsg').innerHTML += "<p> Não tem TV </p>"
+        }
+
+        if (qtdFilhos>=2) {
+            document.querySelector('#divMsg').innerHTML += "<p> Não tem internet </p>"
+        }
+
+        if (qtdFilhos>=3) {
+            document.querySelector('#divMsg').innerHTML += "<p> Não tem video game </p>"
+        }
+
+        if (qtdFilhos>=4) {
+            document.querySelector('#divMsg').innerHTML += "<p> Não tem Netflix </p>"
+        }
+    }
+
+</script>

@@ -1,0 +1,54 @@
+<!-- 8. Uma nutricionista e precisa ajudar seus pacientes a não engordarem tanto na quarentena do Covid19. Ajude ela criando um programa em HTML/JS o qual:
+
+a) Pergunte quantos pães franceses o usuário tem comido por dia
+
+b) Pergunte quantos pacotes de bolacha recheada o usuário tem comido por dia
+
+c) Pergunte quantos copos de achocolatado o usuário tem tomado por dia
+
+d) Ao clicar em "Verificar calorias", calcule quantas calorias o usuário tem consumido com base nas 3 informações. Considere que um pão francês tem 50 calorias, um pacote de bolacha 80 e um copo de achocolatado 70.
+
+e) Após fazer o cálculo, exiba uma dessas frases, abaixo do botão:
+
+   "Parabéns, vai sair em forma da quarentena!", caso as calorias sejam menores do que 200.
+
+   "Cuidado, vai ficar mais "fofinho(a)" após quarentena!", caso as calorias sejam entre 200 e 400.
+
+   "Bom, acho que muitos não vão te reconhecer após a quarentena", caso as calorias sejam mais de 400. -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício #008</title>
+    <style>
+        .amostra{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cálculo de Calorias</h1>
+    <p>quantos <span class="amostra">pães franceses</span> você come por dia? <input type="text" name="inp_pao" id="inp_pao" style="width: 30px;"></p>
+    <p>quantos <span class="amostra">pacotes de bolacha</span> franceses você come por dia? <input type="text" name="inp_bolacha" id="inp_bolacha" style="width: 30px;"></p>
+    <p>quantos <span class="amostra">copos de achocolatado</span> você toma por dia? <input type="text" name="inp_achocolatado" id="inp_achocolatado" style="width: 30px;"></p>
+    <button onclick="verificar()">Verificar Calorias</button>
+    <p><span id="span_msg"></span></p>
+</body>
+</html>
+<script>
+    var vlr_calorias;
+    function verificar(){
+        vlr_calorias = (Number(document.querySelector('#inp_pao').value) * 50) + (Number(document.querySelector('#inp_bolacha').value) * 80) + (Number(document.querySelector('#inp_achocolatado').value) * 70)
+
+        if (vlr_calorias < 200) {
+            document.querySelector('#span_msg').innerHTML = "Parabéns, vai sair em forma da quarentena!"
+        } else if(vlr_calorias < 400){
+            document.querySelector('#span_msg').innerHTML = `Cuidado, vai ficar mais "fofinho(a)" após quarentena!`
+        } else {
+            document.querySelector('#span_msg').innerHTML = "Bom, acho que muitos não vão te reconhecer após a quarentena"
+        }
+    }
+</script>

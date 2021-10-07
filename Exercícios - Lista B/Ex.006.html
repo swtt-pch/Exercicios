@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <h1>Divindo a pizza</h1>
+    <label for="sabor">Selecione o sabor da pizza: </label><input type="text" id="sabor"> 
+    <label for="valor">Qual o valor dessa pizza? </label> <input type="text" id="valor">
+    <br>
+    <label for="amigos">E quantos amigos vão comer essa pizza? </label> <input type="text" id="amigos"><br><br>
+    <input type="button" value="Ver valor por amigo" onclick="calculo()">
+    <hr>
+    <p id="msg"></p>
+</body>
+</html>
+
+<script>
+
+    function calculo(){
+        var sabor = document.getElementById("sabor").value
+        var valor = Number(document.getElementById("valor").value)
+        var amigos = Number(document.getElementById("amigos").value)
+        vlramg = valor / amigos
+        document.getElementById("msg").innerHTML = "Cada amigo vai colaborar com <u>R$ "+ vlramg.toFixed(2)+"</u> para a pizza de " + sabor
+    }
+
+</script>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <select name="selectEspecies" id="selectEspecies" onchange="slcEspecie()">
+            <option value="0" >- Escolha uma espécie -</option>
+            <option value="1" >Ovíparos</option>
+            <option value="2" >Mamiferos</option>
+        </select>
+    </div>
+<br>
+    <div id="divOviparos" style="display: none;">
+        <select name="selectOviparos" id="selectOviparos" onchange="slcOviparo()">
+            <option value="0"> - Escolha um Ovíparo -</option>
+            <option value="1">Galinha</option>
+            <option value="2">Peixe</option>
+            <option value="3">Tartaruga</option>
+        </select>
+    </div>
+    
+    <div id="divMamiferos" style="display: none;">
+        <select name="selectMamiferos" id="selectMamiferos" onchange="slcMamifero()">
+            <option value="0"> - Escolha um Mamífero -</option>
+            <option value="1">Elefante</option>
+            <option value="2">Porco</option>
+            <option value="3">Coelho</option>
+        </select>
+    </div>
+<br>
+    <div id="divImg">
+        <img src="" alt="" id="imgAnimal" width="300px">
+    </div>
+<br>
+    <div id="divCalculo" style="display: none;">
+        <input type="text" name="inpVlrAnimal" id="inpVlrAnimal" placeholder="Valor de compra do animal">
+        <button onclick="calcular()">Calcular imposto</button>
+    </div>
+
+    <p id="pImposto" style="display: none;">O imposto será de R$<span id="showImposto"></span></p>
+</body>
+</html>
+
+<script>
+
+    var imposto;
+    var resultado;
+    const img = document.querySelector("#imgAnimal")
+    document.getElementById("selectEspecies").onchange = function() {slcEspecie()}
+    document.getElementById("selectOviparos").onchange = function() {slcOviparo()}
+    document.getElementById("selectMamiferos").onchange = function() {slcMamifero()}
+
+    function slcEspecie(){
+        var esp = document.getElementById("selectEspecies").value
+        if (esp == 1) {
+            document.getElementById("divOviparos").style.display="block"
+            document.getElementById("divMamiferos").style.display="none"
+            document.getElementById("divCalculo").style.display="none"
+            document.getElementById("pImposto").style.display="none"
+            img.src = ""
+            imposto = 0.05
+        } else if (esp == 2){
+            document.getElementById("divMamiferos").style.display="block"
+            document.getElementById("divOviparos").style.display="none"
+            document.getElementById("divCalculo").style.display="none"
+            document.getElementById("pImposto").style.display="none"
+            img.src = ""
+            imposto = 0.10
+        } else{
+            document.getElementById("divMamiferos").style.display="none"
+            document.getElementById("divOviparos").style.display="none"
+            document.getElementById("divCalculo").style.display="none"
+            document.getElementById("pImposto").style.display="none"
+            img.src = ""
+        }
+        
+    }
+
+    function slcOviparo(){
+        document.getElementById("inpVlrAnimal").value = '';
+        var ovi = document.getElementById("selectOviparos").value
+        if (ovi == 1) {
+            img.src = "https://cptstatic.s3.amazonaws.com/imagens/enviadas/materias/materia24638/galinha-poedeira-afe.jpg"
+            document.getElementById("divCalculo").style.display="block"
+            document.getElementById("pImposto").style.display="none"
+            
+        } else if (ovi == 2){
+            img.src = "https://super.abril.com.br/wp-content/uploads/2020/11/lambari_site.jpg"
+            document.getElementById("divCalculo").style.display="block"
+            document.getElementById("pImposto").style.display="none"
+        } else if (ovi == 3) {
+            img.src = "https://img.estadao.com.br/thumbs/640/resources/jpg/8/6/1603832656468.jpg"
+            document.getElementById("divCalculo").style.display="block"
+            document.getElementById("pImposto").style.display="none"
+        } else{
+            img.src = ""
+            document.getElementById("divCalculo").style.display="none"
+            document.getElementById("pImposto").style.display="none"
+        }
+
+    }
+
+    function slcMamifero(){
+        document.getElementById("inpVlrAnimal").value = '';
+        var mam = document.getElementById("selectMamiferos").value
+        if (mam == 1) {
+            img.src = "https://s1.static.brasilescola.uol.com.br/be/conteudo/images/elefante-africano-50acdbf028d60.jpg"
+            document.getElementById("divCalculo").style.display="block"
+            document.getElementById("pImposto").style.display="none"
+        } else if (mam == 2){
+            img.src = "https://super.abril.com.br/wp-content/uploads/2021/05/porquinho_site.jpg?quality=70&strip=info&w=680&h=453&crop=1"
+            document.getElementById("divCalculo").style.display="block"
+            document.getElementById("pImposto").style.display="none"
+        } else if (mam == 3) {
+            img.src = "https://seres.vet/blog/wp-content/uploads/2020/07/coelho-pode-tomar-banho.jpg"
+            document.getElementById("divCalculo").style.display="block"
+            document.getElementById("pImposto").style.display="none"
+        } else{
+            img.src = ""
+            document.getElementById("divCalculo").style.display="none"
+            document.getElementById("pImposto").style.display="none"
+        }
+    }
+
+    function calcular(){
+        document.getElementById("pImposto").style.display="block"
+
+        var vlr = Number(document.getElementById("inpVlrAnimal").value)
+
+        resultado = vlr * imposto
+
+        document.getElementById("showImposto").innerHTML = resultado
+
+    }
+
+</script>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio #014</title>
+</head>
+<body>
+    <input type="button" value="Iniciar jogo" id="btn-iniciar"onclick="iniciar()">
+    <div id="jogo" style="width: 600px; display: none;">
+
+        <div style="width: 275px; float: left; text-align: center;">
+
+            <img src="imagens/scorpion.png" alt="scorpion" onclick="playerOneHit()">
+            <div style="width: 100%; height: 30px; background-color: red;" id="playerOne"></div>
+            <p>Golpes sofridos pelo lutador 1: <strong><span id="contPlayerOne"><script>document.write(0)</script></span></strong></p>
+
+        </div>
+
+        <div style="float: left; margin-top: 60px;">
+            <h1>VS</h1>
+        </div>
+        <div style="width: 275px; float: right; text-align: center;">
+            <img src="imagens/subzero.png" alt="scorpion" width="174px" height="189px" onclick="playerTwoHit()">
+            <div style="width: 100%; height: 30px; background-color: red;" id="playerTwo"></div>
+            <p>Golpes sofridos pelo lutador 2: <strong><span id="contPlayerTwo"><script>document.write(0)</script></span></strong></p>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    const jogo = document.getElementById("jogo");
+    const playerOne = document.getElementById("playerOne");
+    const playerTwo = document.getElementById("playerTwo");
+    const contPlayerOne = document.getElementById("contPlayerOne");
+    const contPlayertwo = document.getElementById("contPlayertwo");
+    var contOne = 0
+    var contTwo = 0
+    var vidaPlayerOne = 100
+    var vidaPlayerTwo = 100
+
+    function iniciar(){
+        jogo.style.display = 'block'
+        document.getElementById("btn-iniciar").style.display= 'none'
+    }
+
+    function playerOneHit(){
+        vidaPlayerOne -= 5;
+        playerOne.style.width = vidaPlayerOne + '%'
+        if(contOne!=20){
+            contOne++
+        contPlayerOne.innerHTML = contOne
+        }else{
+            return false
+        }
+    }
+
+    function playerTwoHit(){
+        vidaPlayerTwo -= 5;
+        playerTwo.style.width = vidaPlayerTwo + '%'
+        if(contTwo!=20){
+            contTwo++
+        contPlayerTwo.innerHTML = contTwo
+        }else{
+            return false
+        }
+    }
+
+</script>

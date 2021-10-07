@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio #12</title>
+</head>
+<body>
+
+    <P>Valor guardado no cofrinho: R$<span id="valor"><script>document.write((0.00).toFixed(2))</script></span></P>
+    <label for="reais">Depositar R$</label><input type="text" name="reais" id="reais">
+    <input type="button" value="Depositar" onclick="adicionarQuantia()"><br><br>
+    <input type="button" value="Tirar toda a grana" onclick="zerarQuantia()" id="z" disabled><br><br>
+    <p>Quantidade de depositos feitos: <strong><span id="contagemD"><script>document.write(0)</script></span></strong></p>
+    <p>Quantidade de retiradas feitas: <strong><span id="contagemR"><script>document.write(0)</script></span></strong></p>
+
+</body>
+
+</html>
+
+<script>
+    
+    var value = 0;
+    var reais = document.getElementById("reais")
+    var valor = document.getElementById("valor")
+    var contagemD = document.getElementById("contagemD")
+    var contagemR = document.getElementById("contagemR")
+    var btn = document.getElementById("z")
+    var contD = 0;
+    var contR = 0;
+
+    function adicionarQuantia(){
+
+        var add = Number(reais.value);
+        value += add;
+        valor.innerHTML = value.toFixed(2)
+        reais.value = ''
+        if(value!=0){
+            btn.disabled = false
+            contD++
+            contagemD.innerHTML = contD
+        }else{
+            return false
+        }
+    }
+
+    function zerarQuantia(){
+        if(value!=0){
+            value = 0
+            valor.innerHTML = value.toFixed(2)
+            contR++
+            contagemR.innerHTML = contR
+            btn.disabled = true
+        } else{
+            return false;
+            
+        }
+    }
+
+
+
+</script>

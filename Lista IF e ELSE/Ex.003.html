@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex. 003</title>
+</head>
+<body>
+    <input type="text" name="inp_qtdChocolates" id="inp_qtdChocolates" placeholder="Quantidade chocolates compradas" style="width: 220px;">
+    <button onclick="calculo()">Compra</button>
+    <div id="div_show">
+
+    </div>
+</body>
+</html>
+<script>
+
+    var vlr_chocolate;
+    var qtd_chocolate;
+    var total = 0;
+    function calculo() {
+       
+        qtd_chocolate = Number(document.querySelector('#inp_qtdChocolates').value)
+
+        if (qtd_chocolate>=12) {
+            vlr_chocolate=2.50
+            total = vlr_chocolate*qtd_chocolate
+            document.querySelector('#div_show').innerHTML = `o valor da sua compra foi de ${total.toFixed(2).replace('.',',')}`
+        } else {
+            vlr_chocolate=3.00
+            total = vlr_chocolate*qtd_chocolate
+            document.querySelector('#div_show').innerHTML = `o valor da sua compra foi de ${total.toFixed(2).replace('.',',')}`
+        }
+
+    }
+
+</script>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 002</title>
+</head>
+<body>
+    <h1>CHEQUE ESPECIAL</h1>
+    <input type="text" name="inp_saldo" id="inp_saldo" placeholder="Digite o saldo">
+    <input type="text" name="inp_debito" id="inp_debito" placeholder="Digite o valor a ser tirado">
+    <button onclick="analisar()">Analisar conta</button>
+    <div id="div_show">
+
+    </div>
+</body>
+</html>
+<script>
+    var saldo = 0;
+    var debito = 0;
+
+    function analisar() {
+        saldo = Number(document.querySelector('#inp_saldo').value)
+        debito = Number(document.querySelector('#inp_debito').value)
+        saldo -= debito
+        if (saldo<0) {
+            
+            document.querySelector('#div_show').innerHTML = `o saldo atual da conta corrente é ${saldo.toFixed(2)}`
+            document.getElementById('div_show').style.color = 'red';
+            document.getElementById('div_show').style.fontStyle = 'bold';
+        } else {
+            document.querySelector('#div_show').innerHTML = `o saldo atual da conta corrente é ${saldo.toFixed(2)}`
+            document.getElementById('div_show').style.color = 'blue';
+            document.getElementById('div_show').style.fontStyle = 'italiac';
+        }
+}
+</script>

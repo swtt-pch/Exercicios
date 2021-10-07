@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício #013</title>
+</head>
+<body>
+    <button onclick="validar()">Sortear temperatura</button>
+    <p id="temperatura"></p>
+    <p id="msg"></p>
+</body>
+</html>
+<script>
+
+    const msg_temp = document.querySelector("#temperatura")
+    const msg = document.querySelector("#msg")
+    var temp;
+
+    function validar(){
+        temp = Number(Math.random()*40-20)
+        msg_temp.innerHTML = `Temperatura sorteada: <b>${temp.toFixed()}</b>`
+
+        if(temp<=0){ 
+            msg.innerHTML = "<b>Dá pra conservar qualquer alimento</b>"
+        }else if(temp <= 10){
+            msg.innerHTML = "<b>Conserva a maioria dos alimentos</b>"
+        } else {
+            msg.innerHTML = "<b>Estraga a maioria dos alimentos</b>"
+        }
+    }
+
+</script>

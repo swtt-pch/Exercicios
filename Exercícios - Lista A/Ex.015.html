@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="Pessoa Fria" onclick="btnFria()">
+    <input type="button" value="Pessoa Neutra" onclick="btnNeutra()">
+    <input type="button" value="Pessoa Nervosa" onclick="btnNervosa()">
+
+    <br><br>
+
+    <b><p id="msg">Bom dia, colegas</p></b>
+</body>
+</html>
+<script>
+    function btnFria(){
+        document.getElementById("msg").style.color = "darkblue";
+    }
+    function btnNeutra(){
+        document.getElementById("msg").style.color = "gray";
+    }
+    function btnNervosa(){
+        document.getElementById("msg").style.color = "red";
+    }
+</script>

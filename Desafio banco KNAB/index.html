@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco KNAB</title>
+</head>
+<body>
+    <div class="tela1" style="display: block;">
+        <h1>Seja bem vindo ao Banco KNAB</h1>
+        <br>
+        <h2>Simulação de Emprestimos e Investimentos</h2>
+        <br>
+        <h3>Entre com os dados de sua conta:</h3>
+        <input id="inp_conta" placeholder="Conta">
+        <input id="inp_digito" placeholder="Dígito">
+        <input id="inp_senha" type="password" placeholder="Senha"><br><br><br><br>
+        <button onclick="validar()">Simular</button>
+    </div>
+    <div class="tela2" style="display: none;">
+        <h1>O Banco KNAB é a sua melhor opção</h1>
+        <h2>Emprestimos e Investimentos com as melhores taxas do mercado</h2>
+        <h3>Entre com os dados da sua simulação</h3>
+        <br>
+        <label for="inp_vlr">Valor do Operação:</label><input id="inp_vlr" placeholder="valor">
+        <br><br>
+        <select name="sel_operacao" id="sel_operacao">
+            <option value="" selected disabled>Selecione a Operação...</option>
+            <option value="1">Empréstimo</option>
+            <option value="2">Investimento</option>
+        </select>
+        <select name="sel_prazo" id="sel_prazo">
+            <option value="" disabled selected>Selecione o Prazo...</option>
+            <option value="1">Curto</option>
+            <option value="2">Médio</option>
+            <option value="3">Longo</option>
+        </select>
+        <br><br><br>
+        <button onclick="resultado()">Mostrar o Resultado</button>
+    </div>
+    <div class="tela3" style="display: none;">
+        <h1>Quadro de Simulações</h1>
+        <div id="div_display">
+
+        </div>
+        <button onclick="mostrar_tela2()">Voltar a Simulação</button>
+    </div>
+</body>
+</html>
+<script>
+
+const tela1 = document.querySelector(".tela1")
+const tela2 = document.querySelector(".tela2")
+const tela3 = document.querySelector(".tela3")
+const div_display = document.querySelector("#div_display")
+var cont = 0
+
+    function validar(){
+        let conta = Number(inp_conta.value)
+        let digito = Number(inp_digito.value)
+        let senha = inp_senha.value
+
+        if(conta != 0 ){
+            if(digito==conta%11){
+                if (digito==0 || digito==1 || digito==2 || digito==3) {
+                    if (senha=="manaus") {
+                        mostrar_tela2();
+                    }else{
+                        alert("Senha está incorreta")
+                    }
+                }else if(digito==4 || digito==7) {
+                    if (senha=="recife") {
+                        mostrar_tela2();
+                    }else{
+                        alert("Senha está incorreta")
+                    }
+                } else {
+                    if (senha=="fortaleza") {
+                        mostrar_tela2();
+                    }else{
+                        alert("Senha está incorreta")
+                    }
+                }
+            } else {
+                alert("Dígito está incorreto")
+            }
+        } else {
+            alert ("Conta está incorreta")
+        }
+    }
+
+    function resultado() {
+        let valor = Number(inp_vlr.value)
+        let operacao = sel_operacao.value
+        let prazo = sel_prazo.value
+
+        if(!valor || !operacao || !prazo) {
+            if (!valor) {
+                alert("Tem algo errado com seu valor")
+            }
+            if (!operacao) {
+                alert("Selecione uma operação!")
+            }
+            if (!prazo) {
+                alert("Selecione um prazo!")
+            }
+        } else {
+            if (prazo == 1 || prazo == 2) {
+                alert("Esta operação está condicionada ao seu perfil")
+            }
+            mostrar_tela3();
+            cont++;
+            if(operacao==1){
+                emprestimo(valor, prazo, cont)
+            } else {
+                investimento(valor, prazo, cont)
+            }
+        }
+    }
+
+    function mostrar_tela2() {
+        tela1.style.display = "none"
+        tela2.style.display = "block"
+        tela3.style.display = "none"
+    }
+
+    function mostrar_tela3() {
+        tela1.style.display = "none"
+        tela2.style.display = "none"
+        tela3.style.display = "block"
+    }
+ 
+    function emprestimo(x, y, z) {
+        inp_vlr.value = ""
+        sel_operacao.value= ""
+        sel_prazo.value = ""
+        if (y==1){ //se o prazo for curto
+            let taxa = 0.24
+            let valor_taxa = x * taxa
+            div_display.innerHTML += `<p><b>Simulação ${z}</b> – Para o empréstimo de <b>R$ ${x.toFixed(2).replace(".", ",")}</b> no <b>curto prazo</b> será cobrado os juros de <b>R$ ${valor_taxa.toFixed(2).replace(".", ",")}</b> ao ano</p>`
+        } else if(y==2) { //se o prazo for médio
+            let taxa = 0.16
+            let valor_taxa = x * taxa
+            div_display.innerHTML += `<p><b>Simulação ${z}</b> – Para o empréstimo de <b>R$ ${x.toFixed(2).replace(".", ",")}</b> no <b>médio prazo</b> será cobrado os juros de <b>R$ ${valor_taxa.toFixed(2).replace(".", ",")}</b> ao ano</p>`
+        } else { //se o prazo for longo
+            let taxa = 0.10
+            let valor_taxa = x * taxa
+            div_display.innerHTML += `<p><b>Simulação ${z}</b> – Para o empréstimo de <b>R$ ${x.toFixed(2).replace(".", ",")}</b> no <b>longo prazo</b> será cobrado os juros de <b>R$ ${valor_taxa.toFixed(2).replace(".", ",")}</b> ao ano</p>`
+        }
+    }
+
+    function investimento(x, y, z) {
+        inp_vlr.value = ""
+        sel_operacao.value= ""
+        sel_prazo.value = ""
+        if (y==1){ //se o prazo for curto
+            let taxa = 0.05
+            let valor_taxa = x * taxa
+            div_display.innerHTML += `<p><b>Simulação ${z}</b> – Para o investimento de <b>R$ ${x.toFixed(2).replace(".", ",")}</b> no <b>curto prazo</b> será cobrado os juros de <b>R$ ${valor_taxa.toFixed(2).replace(".", ",")}</b> ao ano</p>`
+        } else if(y==2) { //se o prazo for médio
+            let taxa = 0.08
+            let valor_taxa = x * taxa
+            div_display.innerHTML += `<p><b>Simulação ${z}</b> – Para o investimento de <b>R$ ${x.toFixed(2).replace(".", ",")}</b> no <b>médio prazo</b> será cobrado os juros de <b>R$ ${valor_taxa.toFixed(2).replace(".", ",")}</b> ao ano</p>`
+        } else { //se o prazo for longo
+            let taxa = 0.12
+            let valor_taxa = x * taxa
+            div_display.innerHTML += `<p><b>Simulação ${z}</b> – Para o investimento de <b>R$ ${x.toFixed(2).replace(".", ",")}</b> no <b>longo prazo</b> será cobrado os juros de <b>R$ ${valor_taxa.toFixed(2).replace(".", ",")}</b> ao ano</p>`
+        }
+    }
+</script>

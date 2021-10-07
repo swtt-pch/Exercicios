@@ -1,0 +1,35 @@
+<!--
+    1. Juliane Joada só come duas frutas: uva e abacaxi. De forma alguma ela come outra fruta. Crie um programa em HTML/JS que vai analisar se ela vai comer ou não uma fruta da seguinte forma...
+
+a) Pergunte o nome da fruta que chegou na mesa (considere que o usuário só vai digitar o nome de uma fruta)
+
+b) Ao clicar em "Vai comer?", exiba um alert com "Sim, vai comer X" (onde X é a fruta informada), caso a fruta seja uma das que ela come
+
+c) Caso contrário, exiba um alert com "A fruta X ela não come" (onde X é a fruta informada)
+-->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício #001</title>
+</head>
+<body>
+    <input type="text" name="inp_fruta" id="inp_fruta" placeholder="insira o nome da fruta">
+    <button onclick="validar()">Vai comer?</button>
+</body>
+</html>
+<script>
+    function validar() {
+        let fruta = inp_fruta.value
+        fruta = fruta.toLowerCase();
+
+        if(fruta == "uva" || fruta == "abacaxi"){
+            alert("Sim, vai comer " + inp_fruta.value)
+        }else{
+            alert("A fruta "+inp_fruta.value+" ela não come")
+        }
+    }
+</script>

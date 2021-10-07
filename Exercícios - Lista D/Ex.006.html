@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estações</title>
+</head>
+<body>
+    <h1>Estações do Ano</h1>
+    <p>Escolha uma dentre as estações do ano</p>
+    <select name="estacoes" id="estacoes">
+        <option value="" selected disabled></option>
+        <option value="https://www.edublin.com.br/wp-content/uploads/2017/02/shutterstock_474434224-e1523450073180-900x370.jpg">Primavera</option>
+        <option value="https://catracalivre.com.br/wp-content/thumbnails/CKJPIROQxMWzcLBuzBCZ09CNY90=/wp-content/uploads/2020/10/unnamed-12.jpg">Verão</option>
+        <option value="https://dicasparaviagens.com.br/wp-content/uploads/2017/03/Outono-Principal.jpg">Outono</option>
+        <option value="https://www.oficinadeinverno.com.br/blog/wp-content/uploads/2016/10/mala-para-a-Su%C3%A9cia.jpg">Inverno</option>
+    </select>
+    <button onclick="estacao()">Ver Estação</button>
+
+    <div id="show" style="margin-top:10px">
+        <img id="img" src="" alt="" width="200px">
+    </div>
+</body>
+</html>
+
+<script>
+
+    const show = document.getElementById("show")
+    const img = document.querySelector("#img")
+    function estacao(){
+        var link = document.getElementById("estacoes").value
+        img.setAttribute('src', link)
+    }
+
+</script>

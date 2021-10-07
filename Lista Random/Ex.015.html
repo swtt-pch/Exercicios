@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício #015</title>
+</head>
+<body>
+    <p>Números pares: <span id="par">0</span></p>
+    <p>Números ímpares: <span id="impar">0</span></p>
+    <button onclick="sortear()">Sortear número</button>
+    <p>Número sorteado: <span id="numero_sorteado"></span></p>
+</body>
+</html>
+<script>
+    var par = 0;
+    var impar = 0;
+    
+    function sortear() {
+        let n = Math.random()*21-30
+        document.querySelector("#numero_sorteado").innerHTML = n
+        if ((n.toFixed(0) % 2) == 0) {
+            par ++;
+            document.querySelector("#par").innerHTML = par
+        } else {
+            impar ++;
+            document.querySelector("#impar").innerHTML = impar
+        }
+    }
+
+</script>

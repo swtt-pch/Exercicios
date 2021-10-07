@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="btnalert()">Boas-vindas no alerta</button> <br><br>
+    <button onclick="btnpag()">Boas-vindas na página</button> <br><br>
+    <span id="msg"></span>
+</body>
+</html>
+<script>
+
+    function btnalert(){
+        alert("Boas-vindas à página!!!")
+    }
+    function btnpag(){
+        document.getElementById("msg").innerHTML = "Boas-vindas à página!!!";
+        getElementById("msg")
+    }
+</script>

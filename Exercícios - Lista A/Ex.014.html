@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #img{
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="Gente Tímida" onclick="hide()">
+    <input type="button" value="Gente que Causa" onclick="show()">
+    <br>
+    <br>
+    <img src="imagens/blue-confidence-contemporary-woman-success.jpg" alt="pessoa confiante" id="img">
+</body>
+</html>
+<script>
+    function hide(){
+        document.getElementById("img").style.display = "none";
+    }
+    function show(){
+        document.getElementById("img").style.display = '';
+    }
+</script>

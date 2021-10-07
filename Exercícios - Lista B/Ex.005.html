@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Calculo do custo da passagem</h1>
+    <label for="passagem">Digite o valor da passagem: </label><input type="text" id="passagem"> 
+    <label for="viagens">Digite a quantidade de viagens que você faz</label> <input type="text" name="viagem" id="viagem">
+    <br><br>
+    <input type="button" value="Calcular VT" onclick="calculo()">
+
+    <p id="msg"></p>
+</body>
+</html>
+
+<script>
+
+    function calculo(){
+        var passagem = Number(document.getElementById("passagem").value)
+        var viagem = Number(document.getElementById("viagem").value)
+
+        var total = (passagem * 2) * viagem
+
+        document.getElementById("msg").innerHTML = " Você vai gastar <u>R$ " + total.toFixed(2) +  "</u> por mês com ônibus "
+    }
+
+</script>

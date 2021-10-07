@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Brasil x Alemanha</h1>
+    <input type="button" value="Gol do Brasil" onclick="btnBr()"> 
+    <input type="button" value="Gol da Alemanha" onclick="btnGr()">
+    <input type="button" value="Recomeçar partida" onclick="btnR()">
+    <p>Tempo real do jogo:</p>
+    <hr>
+    <div id="msg">
+
+    </div>
+</body>
+</html> 
+
+<script>
+
+    var n = 0;
+
+    function btnBr(){
+        var tag1 = document.createElement("p");
+        var tag2 = document.createElement("hr")
+        var text = document.createTextNode(n + " - É goooolll do Brasil!!!")
+        tag1.appendChild(text);
+        tag1.style.color = "green"
+        var element = document.getElementById("msg").appendChild(tag1);
+        var element = document.getElementById("msg").appendChild(tag2);
+        n++;
+    }
+
+    function btnGr(){
+        var tag1 = document.createElement("p");
+        var tag2 = document.createElement("hr")
+        var text = document.createTextNode(n + " - É goooolll da Alemanha!!! ")
+        tag1.appendChild(text);
+        tag1.style.color = "yellow"
+        tag1.style.backgroundColor = "red"
+        var element = document.getElementById("msg").appendChild(tag1);
+        var element = document.getElementById("msg").appendChild(tag2);
+        n++;
+    }
+
+    function btnR(){
+        document.getElementById("msg").innerHTML = ''
+    }
+</script>

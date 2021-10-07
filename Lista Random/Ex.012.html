@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="avaliar()">Avaliar</button>
+    <p id="nota_gerada"></p>
+    <img src="" alt="" id="img_nota1" width="60px">
+    <br>
+    <button onclick="equipe()">Equipe</button>
+    <p id="media_geral"></p>
+    <img src="" alt="" id="img_nota_media" width="60px">
+</body>
+</html>
+<script>
+
+    const p_nota = document.querySelector("#nota_gerada")
+    const p_media = document.querySelector('#media_geral')
+    const img_nota1 = document.querySelector("#img_nota1")
+    const img_nota2 = document.querySelector("#img_nota_media")
+    var contagem = 0;
+    var soma_notas = 0;
+
+    function avaliar(){
+        contagem++;
+        let nota = Math.random()*5
+        p_nota.innerHTML = `Nota recebida: ${nota.toFixed(1)}`
+        soma_notas += nota
+        notas(nota, img_nota1);
+    }
+
+    function equipe(){
+        let vlr_media = Number(soma_notas / contagem)
+        p_media.innerHTML = `Média geral: ${vlr_media.toFixed(1)}`
+        notas(vlr_media, img_nota2);
+    }
+
+    function notas(x,img){
+        if (x<=0.5) {
+            img.src = "https://cdn-icons-png.flaticon.com/512/2164/2164194.png"
+        } else if(x<=1.5){
+            img.src = "https://img-premium.flaticon.com/png/512/3010/premium/3010406.png?token=exp=1633445192~hmac=f1bf2d50fe2ad23411b377091085245c"
+        } else if(x<3.5){
+            img.src = "https://cdn-icons-png.flaticon.com/512/3769/3769021.png"
+        } else if(x<4.5){
+            img.src = "https://img-premium.flaticon.com/png/512/520/premium/520433.png?token=exp=1633445312~hmac=8e84b6d07e3a75a427cbb0dcbac4a161"
+        } else if(x<5){
+            img.src = "https://cdn-icons-png.flaticon.com/512/2164/2164185.png"
+        }
+    }
+
+</script>

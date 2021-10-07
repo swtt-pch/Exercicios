@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" name="inpRendaFamiliar" id="inpRendaFamiliar" placeholder="valor da renda familiar">
+    <input type="text" name="inpValorPrestacao" id="inpValorPrestacao" placeholder="valor da prestação">
+    <button onclick="Verificar()">Verificar Financiamento</button>
+
+    <div id="divMsg" style="display: none;">
+        <p>a prestação corresponde a <span id="spanMsg"></span>% da renda familiar</p>
+        <p style="font-weight:bold; color: red;"><span id="plus"></span></p>
+    </div>
+    
+</body>
+</html>
+<script>
+
+
+    function Verificar(){
+
+        document.getElementById('divMsg').style.display="block"
+
+        var rendaFamiliar = Number(document.getElementById("inpRendaFamiliar").value)
+        var valorPrestacao = Number(document.getElementById("inpValorPrestacao").value)
+
+        var vlr = (valorPrestacao / rendaFamiliar) * 100
+
+        document.getElementById('spanMsg').innerHTML = vlr.toFixed(1)
+
+        if (vlr>30) {
+            document.getElementById('plus').innerHTML = "Será necessário complementar a renda familiar"
+        } else{
+            document.getElementById('plus').innerHTML = ""
+        }
+
+    }
+
+</script>

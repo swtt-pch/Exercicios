@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cofrinho</title>
+</head>
+<body>
+    <h1>Cofrinho</h1>
+    <select name="cofrinho" id="cofrinho">
+        <option value="0.05">5 centavos</option>
+        <option value="0.1">10 centavos</option>
+        <option value="0.25">25 centavos</option>
+        <option value="0.5">50 centavos</option>
+        <option value="1">1 real</option>
+    </select>
+    <button onclick="depositar()">Depositar valor</button>
+
+    <p>O saldo do cofrinho é de: R$<b id="show_totalDepositos"></b></p>
+    <p>A quantidade de operações foi: <b id="show_qtdDepositos"></b></p>
+    <p>Média dos depósitos: R$<b id="show_mediaDepositos"></b></p>
+
+    <button onclick="zerar()">Gastar a Grana</button>
+</body>
+</html>
+
+<script>
+
+    const show_totalDepositos = document.getElementById("show_totalDepositos")
+    const show_qtdDepositos = document.getElementById("show_qtdDepositos")
+    const show_mediaDepositos = document.getElementById("show_mediaDepositos")
+    var total = 0.00;
+    var quantidade = 0;
+    var media = 0;
+    
+    show_mediaDepositos.innerHTML= media.toFixed(2).replace('.', ',')
+    show_qtdDepositos.innerHTML = quantidade
+    show_totalDepositos.innerHTML = total.toFixed(2).replace('.', ',')
+
+    function depositar(){
+        var d = Number(document.getElementById("cofrinho").value)
+        total += d;
+        quantidade++
+        media = total/quantidade
+
+        show_mediaDepositos.innerHTML= media.toFixed(2).replace('.', ',')
+        show_qtdDepositos.innerHTML = quantidade
+        show_totalDepositos.innerHTML = total.toFixed(2).replace('.', ',')
+    }
+
+    function zerar(){
+        total = 0.00;
+        quantidade = 0;
+        media = 0;
+
+        show_mediaDepositos.innerHTML= media.toFixed(2).replace('.', ',')
+        show_qtdDepositos.innerHTML = quantidade
+        show_totalDepositos.innerHTML = total.toFixed(2).replace('.', ',')
+    }
+
+</script>

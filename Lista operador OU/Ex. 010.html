@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício #010</title>
+</head>
+<body>
+    <input type="text" name="inp_nome_empresa" id="inp_nome_empresa" placeholder="Nome da empresa">
+    <input name="inp_vlr_bolsa" id="inp_vlr_bolsa" placeholder="Valor da bolsa">
+    <input id="inp_vlr_vr" placeholder="Valor do VR">
+    <input id="inp_tempo_deslocamento" placeholder="digite o tempo de deslocamento, em minutos">
+    <button onclick="validar()">É preferida?</button>
+    <div id="div_msg">
+    </div>
+</body>
+</html>
+<script>
+    const div_msg = document.querySelector("#div_msg")
+    
+    function validar(){
+        let bolsa = Number(inp_vlr_bolsa.value)
+        let vr = Number(inp_vlr_vr.value)
+        let desl = Number(inp_tempo_deslocamento.value)
+        let empresa = inp_nome_empresa.value
+
+        if(bolsa>=1800 || vr>=20 || desl<=30){
+            div_msg.innerHTML += "<p>A empresa "+empresa+" é uma de suas preferidas</p>"
+        } else{
+            div_msg.innerHTML += "<p>A empresa "+empresa+" está fora da sua lista</p>"
+        }
+        inp_nome_empresa.value= ""
+        inp_vlr_vr.value= ""
+        inp_tempo_deslocamento.value= ""
+        inp_vlr_bolsa.value= ""
+    }
+</script>

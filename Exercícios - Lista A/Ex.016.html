@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 300px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="Nada" onclick="nada()">
+    <input type="button" value="Corre" onclick="corre()">
+    <input type="button" value="Pedala" onclick="pedala()">
+    <br>
+    <br>
+    <img src="imagens/swimming.jpg" alt="" id="nada">
+    <img src="imagens/run.png" alt="" id="corre">
+    <img src="imagens/cycling.png" alt="" id="pedala">
+</body>
+</html>
+<script>
+     function nada(){
+         document.getElementById("nada").style.display = "block";
+         document.getElementById("corre").style.display = "none";
+         document.getElementById("pedala").style.display = "none";
+     }
+
+     function corre(){
+        document.getElementById("nada").style.display = "none";
+        document.getElementById("corre").style.display = "block";
+        document.getElementById("pedala").style.display = "none";
+     }
+
+     function pedala(){
+        document.getElementById("nada").style.display = "none";
+        document.getElementById("corre").style.display = "none";
+        document.getElementById("pedala").style.display = "block";
+     }
+</script>

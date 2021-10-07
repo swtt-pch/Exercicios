@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input name="inp_login" id="inp_login" placeholder="login"> 
+    <input type="password" name="inp_senha" id="inp_senha" placeholder="inp_senha">
+    <input name="inp_seguranca" id="inp_seguranca" placeholder="código de segurança"> 
+    <button onclick="validar()">Entrar</button>
+</body>
+</html>
+<script>
+    function validar(){
+        if( (inp_login.value=="bandtec") && (inp_senha.value=="digital") && (inp_seguranca.value == "123") ){
+            alert("Usuário autenticado com sucesso")
+        } else {
+            alert("Falha na autenticação")
+        }
+    }
+</script>
