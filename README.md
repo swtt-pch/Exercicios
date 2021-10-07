@@ -1,2 +1,3 @@
-# Listas-de-Exerc-cios
-Repositório em que irei armazenar os exercícios elaborados por mim na aula de Algoritmos
+# Listas-de-Exercícios
+
+Repositório em que irei armazenar os exercícios realizados por mim na aula de Algoritmos no Curso de Analise e Desenvolvimento de Sistemas.
