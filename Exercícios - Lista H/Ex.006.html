@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício #006</title>
+</head>
+<body>
+    <h1>Contador do quanto você ama alguém</h1>
+    <label for="inp-nome">Qual o nome da pessoa que você ama? 😍😍😍 </label><input type="text" name="inp-nome" id="inp-nome" >
+    <br><br>
+    <label for="inp-count">O quanto você ama essa pessoa? 😍😍😍 </label><input type="text" name="inp-count" id="inp-count" >
+    <br><br>
+    <button onclick="expressar()">Expressar amor</button>
+    <div id="div-msg"></div>
+</body>
+</html>
+<script>
+    function expressar() {
+        let nome = document.getElementById("inp-nome").value
+        let count = Number(document.getElementById("inp-count").value) || 1
+        let i = 0
+        while (i<count) {
+            document.getElementById("div-msg").innerHTML += `<p><b>${nome}</b>, eu te amo! <i>Sempre lembre disso</i>😍😍😍</p>`;
+            i++;
+        }
+    }
+</script>

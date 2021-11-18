@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício #009</title>
+</head>
+<body>
+    <h1>Simulador de Papagaio</h1>
+    <label for="inp-numero">quantas vezes você quer que a frase repita? </label><input type="text" name="inp-numero" id="inp-numero">
+    <br><br>
+    <label for="inp-frase">qual frase você quer que repita? </label><input type="text" name="inp-frase" id="inp-frase">
+    <br><br>
+    <button onclick="papagaio()">Papagaio</button>
+    <div id="div-msg"></div>
+</body>
+</html>
+<script>
+    function papagaio() {
+        let frase = document.getElementById("inp-frase").value  
+        let numero = Number(document.getElementById("inp-numero").value) || 1
+        let i = 0
+        while (i>=numero) {
+            document.getElementById("div-msg").innerHTML += `<p>${frase}</p>`;
+            i++;
+        }
+    }
+</script>

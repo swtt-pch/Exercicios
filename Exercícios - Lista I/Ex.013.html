@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício #013</title>
+</head>
+<body>
+    <select id="res">
+        <option value="" disabled selected>selecione...</option>
+        <option value="0">Vitória</option>
+        <option value="1">Empate</option>
+        <option value="2">  Derrota</option>
+    </select>
+
+
+    <button onclick="reg()">registrar jogo</button>
+
+    <div id="msg">
+
+    </div>
+    <br>
+    <br>
+    <label for="res_busca">Indique qual jogo quer saber o resultado</label>
+    <input type="text" id="res_busca" oninput="busca(this.value)">
+    <p id="res_msg"></p>
+</body>
+</html>
+<script>
+    var v = 0
+    var e = 0
+    var d = 0
+    var a = []
+
+    function reg() {
+        if(res.value == ""){
+            alert("selecione um campo valido!")
+        } else if(res.value == 0){
+            v++
+            a.push("Ganhou")
+            att()
+        } else if(res.value == 1){
+            a.push("Empatou")
+            e++
+            att()
+        } else if (res.value == 2){
+            a.push("Perdeu")
+            d++
+            att()
+        }
+    } 
+
+    function att(){
+        let t = a.length
+        let x = (v*3)+(e)
+        let y = (v/a.length)*100
+        msg.innerHTML = ""
+        msg.innerHTML += `<p>O time teve: ${v} vitórias, ${e} empates, ${d} derrotas</p>`
+        msg.innerHTML += `<p>Pontuação total: ${x} pontos</p>`
+        msg.innerHTML += `<p>Aproveitamento: ${y}%</p>`
+    }
+
+    function busca(b){
+        if((b)>a.length){
+            res_msg.innerHTML = `Não foi cadastrado um ${b}º jogo`
+        } else {
+            res_msg.innerHTML = `No ${b}º jogo, o time ${a[b-1]}`
+        }
+        
+    }
+</script>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício #002</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+    var body = document.body;
+    body.onload = app;
+    function app() {
+        var inp = document.createElement("input")
+        inp.placeholder = "Destino de viagem"
+        inp.setAttribute("id", "inp")
+        body.appendChild(inp)
+        var btn = document.createElement("button")
+        btn.appendChild(document.createTextNode("Adicionar"))
+        btn.setAttribute("id", "btn")
+        btn.onclick = adicionar
+    }
+
+    function adicionar() {
+        if(inp.value == ""){
+
+        }
+    }
+</script>

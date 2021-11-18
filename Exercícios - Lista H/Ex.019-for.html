@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício #019</title>
+</head>
+<body>
+    <h1>Qual sua idade</h1>
+    <p>escreva sua idade e te descreveremos ela</p>
+    <input id="idade" oninput="acao(this.value)"> 
+    <div id="msg"></div>
+</body>
+</html>
+<script>
+
+    function acao(x) {
+        msg.innerHTML = `` 
+        for (let index = 0; index <= x; index++) {
+            if(index<5){
+                msg.innerHTML += `<p>${index} anos (Primeira Infância)</p>`
+            } else if(index<7){
+                msg.innerHTML += `<p>${index} anos (Pré-escolar)</p>`
+            } else if(index<11){
+                msg.innerHTML += `<p>${index} anos (Segunda Infância)</p>`
+            } else if(index<19){
+                msg.innerHTML += `<p>${index} anos (Adolescência)</p>`
+            } else if(index<51){
+                msg.innerHTML += `<p>${index} anos (Adulto)</p>`
+            } else if(index<101){
+                msg.innerHTML += `<p>${index} anos (Melhor idade)</p>`
+            } else if(index>=101){
+                msg.innerHTML += `<p>${index} anos (Matusalém)</p>`
+            }
+        }
+    }
+
+</script>

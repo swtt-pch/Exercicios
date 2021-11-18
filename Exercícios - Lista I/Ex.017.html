@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício #017</title>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif;">
+    <div id="registros" style="width: 415px">
+        <h1 style="font-size: 20px;">Análise de performace de Aluno - Registros</h1>
+        <label for="reg_nome">Entre com o nome do aluno: </label><input type="text" name="" id="reg_nome"><br><br>
+        <label for="reg_nota">Entre com a nota do aluno: </label><input type="text" name="" id="reg_nota"><br><br>
+        <button style="margin-left: 15px;" onclick="registrar()">Registrar</button><button onclick="telaPesquisa()" style="margin-left: 15px;">Analisar</button>
+        <div id="reg_msg" style="width: 100%;"></div>
+    </div>
+    <div id="analise" style="display: none;">
+        <h1 style="font-size: 20px;">Análise de performace de Aluno - Pesquisa</h1>
+        <label for="reg_nome">Entre com o nome do aluno: </label><input type="text" placeholder="De" id="reg_initial"><input type="text" placeholder="Até" id="reg_final"><br><br><br>
+        <button onclick="listarPesquisa()">Pesquisar</button>
+        <div id="pes_msg" style="width: 100%;"></div>
+    </div>
+</body>
+</html>
+
+<script>
+    var v = [];
+
+    function telaPesquisa(){
+        registros.style.display = "none"
+        analise.style.display = "block"
+    }
+
+    function registrar(){
+        if (reg_nome.value && reg_nota.value && (reg_nota.value>=0 && reg_nota.value<=10)) {
+            reg_msg.innerHTML = ""
+            v.push([reg_nome.value, parseFloat(reg_nota.value)])
+            for (let i = v.length-1; i >= 0; i--) {
+                reg_msg.innerHTML += `<p>O aluno ${v[i][0]} ficou com a nota ${v[i][1]}</p>`
+            }   
+            reg_nota.value = ""
+            reg_nome.value = ""
+        } else{
+            alertasRegistro(reg_nome.value, reg_nota.value)
+        }
+    }
+
+    function listarRegistro(){
+
+    }
+
+    function listarPesquisa(){
+        let total = v.length;
+        let intervalo;
+        let maior = maiorNota();
+        let menor = menorNota();
+        let m = media();
+        if (alertasPesquisa(reg_initial.value ,reg_final.value)) {
+            pes_msg.innerHTML = ""
+            let x = parseInt(reg_initial.value)
+            let y = parseInt(reg_final.value)
+            intervalo = soma(x,y);
+            for (let i = 0; i < v.length; i++) {
+                    if (v[i][1]>=x && v[i][1]<=y) {
+                        pes_msg.innerHTML += `<p>O aluno ${v[i][0]} ficou com a nota ${v[i][1]}</p>`
+                    }
+                }   
+        }
+        pes_msg.innerHTML += `<p><b>Total de alunos registrados: ${total}</b></p>` 
+        pes_msg.innerHTML += `<p><b>Total de alunos listado: ${intervalo}</b></p>` 
+        pes_msg.innerHTML += `<p><b>Maior Nota = ${maior}</b></p>` 
+        pes_msg.innerHTML += `<p><b>Menor Nota = ${menor}</b></p>` 
+        pes_msg.innerHTML += `<p><b>Média da Nota = ${m}</b></p>` 
+    }
+
+    function alertasRegistro(reg_nome ,reg_nota){
+        if (!reg_nome) {
+            if(!reg_nome && !reg_nota){
+                alert("Preencha o campo nome e coloque uma nota")
+            } else if (!reg_nome && !(reg_nota>=0 && reg_nota<=10)) {
+                alert("Preencha o campo nome e coloque uma nota entre 0 e 10")
+            } else {
+                alert("Preencha o campo nome")
+            }
+        } else{
+            if (!reg_nota) {
+            alert("Coloque uma nota")
+            }
+            if(!(reg_nota>=0 && reg_nota<=10)){
+                alert("Coloque uma nota entre 0 e 10")
+            }
+        }
+    }
+
+    function alertasPesquisa(reg_initial ,reg_final){
+        if (!reg_initial && !reg_final) {
+            alert("Coloque uma nota inicial e uma final")
+            return false
+        } else{
+            if (!reg_initial) {
+                alert("Coloque uma nota inicial")
+                return false
+            } else if (!reg_final) {
+                alert("Coloque uma nota final")
+                return false
+            } else if (!(reg_initial>=0 && reg_initial<=10)&&!(reg_final>=0 && reg_final<=10)) {
+                alert("Ambas as notas tem de estar entre 0 e 10")
+                return false
+            } else if(!(reg_initial>=0 && reg_initial<=10)){
+                alert("A nota inicial tem de estar entre 0 e 10")
+                return false
+            } else if(!(!reg_final>=0 && !reg_final<=10)){
+                alert("A nota final tem de estar entre 0 e 10")
+                return false
+            }
+        }
+        return true
+
+    }
+
+    function maiorNota(){
+        let count = 0 
+        let prod;
+        for (let i = 0; i < v.length; i++) {
+            if (count<=v[i][1]) {
+                prod = v[i][0]
+                count = v[i][1]
+            }
+        }
+        return prod
+    }
+
+    function menorNota(){
+        let count = v[0][1]
+        let prod;
+        for (let i = 0; i < v.length; i++) {
+            console.log(v[i][1])
+            if (count>=v[i][1]) {
+                prod = v[i][0]
+                count = v[i][1]
+            }
+        }
+        return prod
+    }
+
+    function soma(x, y){
+        let count = 0
+        for (let i = 0; i < v.length; i++) {
+            if (v[i][1]>=x && v[i][1]<=y) {
+                count++
+            }
+        }
+        return count
+    }
+
+    function media(){
+        let count = 0
+        for (let i = 0; i < v.length; i++) {
+            count += v[i][1]
+        }
+        let media = count / v.length
+        return media
+    }
+</script>

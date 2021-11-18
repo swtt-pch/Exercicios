@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício #012</title>
+</head>
+<body>
+    Digite o nome de um filho:<input type="text" id="inp_nome">
+    <br>
+    <button onclick="cad()">Cadastrar</button> <br> <br>
+    <button onclick="att()">Atualizar Família</button>
+    <div id="msg"></div>
+</body>
+</html>
+<script>
+    var v = []
+    function cad() {
+        let f = inp_nome.value.toUpperCase();
+        if (v.length == 0) {
+            v.push(f);
+        } else {
+            if (check(f, v)) {
+                v.push(f)
+            } else {
+                alert("Não pode mais de 1 filho com o mesmo nome!")
+            }
+        }
+        console.log(v.length)
+        inp_nome.value = "";
+    }
+
+    function check(f, v) {
+        for (let i = 0; i < v.length; i++) {
+            if(f == v[i]){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function att() {
+        let x = v.length
+        let y = (x * 3000).toFixed(2)
+        let z = (x * 1500).toFixed(2)
+        msg.innerHTML = ""
+        msg.innerHTML += `<p><b>Você tem ${x} filhos</b></p>`
+        msg.innerHTML += `<p>  <b>Seu custo mensal será aproximadamente R$${y} se colocar eles em escola particular ou R$${z} se eles estudarem em escola pública</b></p>`
+    }
+</script>

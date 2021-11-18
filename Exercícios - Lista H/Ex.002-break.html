@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício #002</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+    document.body.onload = app();
+
+    function app () {
+        var img = document.createElement('div')
+        img.setAttribute("id", "img")
+        var msg = document.createElement('div')
+        msg.setAttribute("id", "msg")
+        var btn = document.createElement('button')
+        btn.appendChild(document.createTextNode("Ver minha sorte") )
+        btn.setAttribute("onclick", "sortear()")
+        document.body.appendChild(btn)
+        document.body.appendChild(img)
+        document.body.appendChild(msg)
+    }
+
+
+
+    function sortear() {
+        img.innerHTML = ``
+        let amor = 0;
+        let sorte = 0;
+        let count = 0;
+        while (count<21) {
+            let r = Math.random()
+            if (r>0.5) {
+                img.innerHTML += `<img src="https://media.istockphoto.com/vectors/union-jack-king-of-hearts-two-vector-id165808335?k=20&m=165808335&s=612x612&w=0&h=ZrQwlH2Bx6KOkHkl0yq91O_EF9xgYhEdNZrkceNy1Q8=" height="80px">`
+                sorte++
+            } else {
+                img.innerHTML += `<img src="https://conteudo.imguol.com.br/c/entretenimento/eb/2020/01/24/o-amor-pode-confundir-um-pouco-a-gente-1579878654661_v2_450x450.jpg" height="80px">`
+                amor++
+            }
+            if (amor==11 || sorte ==11) {
+                break;
+            }
+        count++
+        }
+
+        if (amor>sorte) {
+            msg.innerHTML = `Você tem mais sorte no amor`
+        } else {
+            msg.innerHTML = `Você tem mais sorte no jogo`
+        }
+    }
+</script>

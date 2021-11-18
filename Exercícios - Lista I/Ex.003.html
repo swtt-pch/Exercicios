@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+    var div_1 = document.createElement("div")
+    var div_2 = document.createElement("div")
+    var inp_1 = document.createElement("input")
+    var inp_2 = document.createElement("input")
+    var btn_1 = document.createElement("button")
+    var btn_2 = document.createElement("button")
+    var msg = document.createElement("p")
+    var bairro = []
+
+    document.body.onload = app()
+    function app() {
+        div_1.appendChild(inp_1)
+        btn_1.onclick = adicionar
+        btn_1.appendChild(document.createTextNode("Cadastrar bairro"))
+        div_1.appendChild(btn_1)
+        btn_2.onclick = find
+        btn_2.appendChild(document.createTextNode("Relembrar moradia"))
+        div_2.appendChild(inp_2)
+        div_2.appendChild(btn_2)
+        div_2.appendChild(msg)
+        div_1.style = "padding: 15px 0; height: 15px;"
+        div_2.style = "padding: 15px 0; height: 15px;"
+        document.body.appendChild(div_1)
+        div_1.append(div_2)
+    }
+
+    function adicionar() {
+        bairro.push(inp_1.value)
+        inp_1.value = ''
+    }
+
+    function find() {
+        if (inp_2.value <= bairro.length) {
+            msg.innerHTML = bairro[inp_2.value-1]
+        } else {
+            msg.innerHTML = `<b>Você ainda não morou num ${inp_2.value}º bairro!</b>`
+        }
+    }
+</script>

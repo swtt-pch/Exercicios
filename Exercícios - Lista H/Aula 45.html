@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <label for="inp-qtd">Quantos números aleatórios você quer? </label><input type="text" name="inp-qtd" id="inp-qtd">
+    <button onclick="sortear()">Sortear números</button>
+    <div id="div-msg"></div>
+</body>
+</html>
+<script>
+    function sortear() {
+        document.getElementById("div-msg").innerHTML = " "
+        var qtd = Number(document.getElementById("inp-qtd").value);
+        var i = 0;
+        while (i<qtd) {
+            var n = (Math.random() * 100)
+            document.getElementById("div-msg").innerHTML += "Número "  + (i+1)+ " -   " + n.toFixed() + "<br>"
+            if (n.toFixed() % 6 == 0 ) {
+                break;
+            }
+            i++
+        }
+    }
+</script>

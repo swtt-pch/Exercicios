@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício #019</title>
+</head>
+<body>
+    <input type="text" name="inp-qtd-onbs" id="inp-qtd-onbs">
+    <input type="text" name="inp-qtd-trens" id="inp-qtd-trens">
+    <input type="text" name="inp-qtd-metro" id="inp-qtd-metro">
+    <button onclick="partiu()">#Partiu Trajeto</button>
+    <div id="msg">
+
+    </div>
+</body>
+</html>
+<script>
+    function partiu() {
+        document.getElementById("msg").innerHTML = ``
+        let onibus = document.getElementById("inp-qtd-onbs").value
+        let trem = document.getElementById("inp-qtd-trens").value
+        let metro = document.getElementById("inp-qtd-metro").value
+        let i = 0;
+        while (i<onibus) {
+            if (i==1) {
+                document.getElementById("msg").innerHTML += `<p><b>Pegando o ${i+1}º ônibus: Começando a cansar</b></p>`
+            } else if(i>=2){
+                document.getElementById("msg").innerHTML += `<p><b>Pegando o ${i+1}º ônibus: Já cansado</b></p>`
+            } else {
+                document.getElementById("msg").innerHTML += `<p><b>Pegando o ${i+1}º ônibus</b></p>`
+            }
+            i++
+        }
+        i = 0;
+        while (i<trem) {
+            if (i==1) {
+                document.getElementById("msg").innerHTML += `<p><b>Pegando o ${i+1}º trem: Começando a cansar</b></p>`
+            } else if(i>=2){
+                document.getElementById("msg").innerHTML += `<p><b>Pegando o ${i+1}º trem: Já cansado</b></p>`
+            } else {
+                document.getElementById("msg").innerHTML += `<p><b>Pegando o ${i+1}º trem</b></p>`
+            }
+            i++
+        }
+        i = 0;
+        while (i<metro) {
+            if (i==1) {
+                document.getElementById("msg").innerHTML += `<p><b>Pegando o ${i+1}º metrô: Começando a cansar</b></p>`
+            } else if(i>=2){
+                document.getElementById("msg").innerHTML += `<p><b>Pegando o ${i+1}º metrô: Já cansado</b></p>`
+            } else {
+                document.getElementById("msg").innerHTML += `<p><b>Pegando o ${i+1}º metrô</b></p>`
+            }
+            i++
+        }
+
+        if (onibus == 0) {
+            document.getElementById("msg").innerHTML += `<p>O usuário não pegou nenhum ônibus</p>`
+        }
+
+        if (trem == 0) {
+            document.getElementById("msg").innerHTML += `<p>O usuário não pegou nenhum trem</p>`
+        }
+
+        if (metro == 0) {
+            document.getElementById("msg").innerHTML += `<p>O usuário não pegou nenhum metrô</p>`
+        }
+    }
+</script>
